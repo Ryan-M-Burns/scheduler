@@ -12,7 +12,7 @@ const InterviewerList = props => {
   const interviewerList = interviewers.map(individual => {
     return (
       <InterviewerListItem
-        key ={individual.id}
+        key={individual.id}
         name={individual.name}
         avatar={individual.avatar}
         setInterviewer={() => setInterviewer(individual.id)}

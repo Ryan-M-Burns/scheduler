@@ -15,7 +15,7 @@ const Show = props => {
         <h2 className="text--regular">{student}</h2>
         <section className="interviewer">
           <h4 className="text--light">Interviewer</h4>
-          <h3 className="text--regular">{interviewer.name}</h3>
+          <h3 className="text--regular">Sylvia Palmer</h3>
         </section>
       </section>
       <section className="appointment__card-right">
@@ -24,11 +24,13 @@ const Show = props => {
             className="appointment__actions-button"
             src="images/edit.png"
             alt="Edit"
+            onClick={onEdit}
           />
           <img
             className="appointment__actions-button"
             src="images/trash.png"
             alt="Delete"
+            onClick={onDelete}
           />
         </section>
       </section>

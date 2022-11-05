@@ -6,7 +6,6 @@ import './DayListItem.scss';
 const DayListItem = (props) => {
 
   const {
-    key, // Number
     name, // String
     spots, // Number
     selected, // Boolean

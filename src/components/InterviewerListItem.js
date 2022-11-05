@@ -5,7 +5,9 @@ import "./InterviewerListItem.scss";
 
 const InterviewerListItem = props => {
 
-  const { name,
+  const {
+    id, // number
+    name, // string
     avatar, // url
     setInterviewer, // function
     selected // boolean
@@ -14,7 +16,7 @@ const InterviewerListItem = props => {
   const InterviewerItemClass = classNames("interviewers__item", { "interviewers__item--selected": selected });
 
   return (
-    <li onClick={setInterviewer} className={InterviewerItemClass}>
+    <li onClick={() => setInterviewer(id)} className={InterviewerItemClass}>
       <img
         className="interviewers__item-image"
         src={avatar}

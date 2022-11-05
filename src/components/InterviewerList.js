@@ -1,12 +1,25 @@
 import React from 'react';
-
-const InterviewerList = (props) => {
+import InterviewerListItem from './InterviewerListItem';
+import "./InterviewerList.scss";
+const InterviewerList = props => {
 
   const {
-    interviewers, // array 
+    interviewers, // array
     setInterviewer, // function
-    interviewer // number  
+    interviewer, // number
   } = props;
+
+  const interviewerList = interviewers.map(individual => {
+    return (
+      <InterviewerListItem
+        id={individual.id}
+        name={individual.name}
+        avatar={individual.avatar}
+        setInterviewer={setInterviewer}
+        selected={individual.id === interviewer}
+      />
+    );
+  });
 
   return (
     <section className="interviewers">
@@ -14,7 +27,7 @@ const InterviewerList = (props) => {
         Interviewer
       </h4>
       <ul className="interviewers__list">
-
+        {interviewerList}
       </ul>
     </section>
   );

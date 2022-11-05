@@ -10,21 +10,20 @@ const DayList = (props) => {
   } = props;
 
   const dayList = days.map(singleDay => {
-
     return (
       <DayListItem
-        key={singleDay.key}
+        key={singleDay.id}
         name={singleDay.name} // String
         spots={singleDay.spots} // Number
-        selected={singleDay.selected} // Boolean
-        setDay={singleDay.setDay}
+        selected={singleDay.name === day} // Boolean
+        setDay={setDay}
       />
     );
-  
   });
+
   return (
     <ul>
-
+      {dayList}
     </ul>
   );
 };

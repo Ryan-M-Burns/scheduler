@@ -10,7 +10,6 @@ const Button = (props) => {
   });
 
   return (
-
     <button
       className={buttonClass}
       onClick={props.onClick}
@@ -18,7 +17,6 @@ const Button = (props) => {
     >
       {props.children}
     </button>
-
   );
 
 };

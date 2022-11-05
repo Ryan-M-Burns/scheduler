@@ -8,14 +8,14 @@ const InterviewerListItem = props => {
   const {
     name, // string
     avatar, // url
-    setInterviewer, // function
-    selected // boolean
+    selected, // boolean
+    onChange // function
   } = props;
 
   const InterviewerItemClass = classNames("interviewers__item", { "interviewers__item--selected": selected });
 
   return (
-    <li className={InterviewerItemClass} onClick={setInterviewer}>
+    <li className={InterviewerItemClass} onClick={onChange}>
       <img
         className="interviewers__item-image"
         src={avatar}

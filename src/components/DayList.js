@@ -5,18 +5,18 @@ const DayList = props => {
 
   const {
     days, // array
-    day, // string
-    setDay // function
+    value, // string
+    onChange // function
   } = props;
 
-  const dayList = days.map(singleDay => {
+  const dayList = days.map(day => {
     return (
       <DayListItem
-        key={singleDay.id}
-        name={singleDay.name} // String
-        spots={singleDay.spots} // Number
-        selected={singleDay.name === day} // Boolean
-        setDay={setDay}
+        key={day.id}
+        value={day.value} // String
+        spots={day.spots} // Number
+        selected={day.name === value} // Boolean
+        onChange={() => onChange(day.name)}
       />
     );
   });

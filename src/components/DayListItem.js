@@ -6,10 +6,10 @@ import './DayListItem.scss';
 const DayListItem = (props) => {
 
   const {
-    name, // String
+    value, // String
     spots, // Number
     selected, // Boolean
-    setDay // Function
+    onChange // Function
   } = props;
 
   const dayClass = classNames("day-list__item", {
@@ -31,8 +31,8 @@ const DayListItem = (props) => {
 
   return (
 
-    <li onClick={() => setDay(name)} className={dayClass}>
-      <h2 className="text--regular">{name}</h2>
+    <li onClick={onChange} className={dayClass}>
+      <h2 className="text--regular">{value}</h2>
       <h3 className="text--light">{formatSpots()}</h3>
     </li>
 

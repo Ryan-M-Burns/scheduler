@@ -4,7 +4,6 @@ const Show = props => {
 
   const {
     student, // string
-    interviewer, // object
     onEdit, // function
     onDelete // function
   } = props;

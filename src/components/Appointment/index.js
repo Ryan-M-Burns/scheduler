@@ -11,7 +11,6 @@ const Appointment = props => {
       <Header time={props.time} />
       {props.interview ? <Show student={props.interview.student} interviewer={props.interview.interviewer} /> : <Empty />}
     </article>
-
   );
 
 };

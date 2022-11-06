@@ -4,6 +4,7 @@ const Show = props => {
 
   const {
     student, // string
+    interviewer, // number
     onEdit, // function
     onDelete // function
   } = props;
@@ -11,10 +12,16 @@ const Show = props => {
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">
-        <h2 className="text--regular">{student}</h2>
+        <h2 className="text--regular">
+          {student}
+        </h2>
         <section className="interviewer">
-          <h4 className="text--light">Interviewer</h4>
-          <h3 className="text--regular">Sylvia Palmer</h3>
+          <h4 className="text--light">
+            Interviewer
+          </h4>
+          <h3 className="text--regular">
+            {interviewer.name}
+          </h3>
         </section>
       </section>
       <section className="appointment__card-right">

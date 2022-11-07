@@ -4,7 +4,6 @@ import './DayListItem.scss';
 
 
 const DayListItem = (props) => {
-
   const {
     value, // String
     spots, // Number

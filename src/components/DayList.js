@@ -13,7 +13,7 @@ const DayList = props => {
     return (
       <DayListItem
         key={day.id}
-        value={day.value} // String
+        value={day.name} // String
         spots={day.spots} // Number
         selected={day.name === value} // Boolean
         onChange={() => onChange(day.name)}

@@ -16,7 +16,7 @@ const Appointment = props => {
   const SHOW = "SHOW";
   const CREATE = "CREATE";
 
-  const { interview, interviewers, time, onCancel, onSave } = props;
+  const { interview, interviewers, time, onSave } = props;
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 
   return (

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
-import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 
 import "components/Application.scss";
 
@@ -26,22 +26,24 @@ const Application = () => {
       const interviewers = all[2].data;
       setState(prev => ({ ...prev, days, appointments, interviewers }));
     });
-  });
+  }, []);
 
 
   const setDay = day => setState({ ...state, day });
 
-
+  const dailyInterviewers = getInterviewersForDay(state, state.day);
   const dailyAppointments = getAppointmentsForDay(state, state.day);
+
   const appointmentList = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
 
     return (
       <Appointment
-        key={appointment.id}
-        id={appointment.id}
-        time={appointment.time}
-        interview={interview}
+        key={appointment.id} // 1
+        id={appointment.id} // 1
+        time={appointment.time} //12
+        interview={interview} // null || interview obj: student name, interviewer info(ID, avatar, name)
+        interviewers={dailyInterviewers} // object of available interviewers for day
       />
     );
   });

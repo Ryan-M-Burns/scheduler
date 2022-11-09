@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Show = props => {
-
+  console.log("Show", props);
   const {
     student, // string
     interviewer, // number

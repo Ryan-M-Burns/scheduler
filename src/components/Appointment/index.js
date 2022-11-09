@@ -15,6 +15,7 @@ const Appointment = props => {
   const CONFIRM = "CONFIRM";
   const CREATE = "CREATE";
   const DELETING = "DELETING";
+  const EDIT = "EDIT";
   const EMPTY = "EMPTY";
   const SAVING = "SAVING";
   const SHOW = "SHOW";
@@ -47,10 +48,10 @@ const Appointment = props => {
   return (
     <article className="appointment">
       <Header time={time} />
-      {mode === CONFIRM && <Confirm 
-      message={"Are you sure you would like to cancel?"}
-      onCancel={() => transition(SHOW)} 
-      onConfirm={() => transition(del)} 
+      {mode === CONFIRM && <Confirm
+        message={"Are you sure you would like to cancel your interview?"}
+        onCancel={() => transition(SHOW)}
+        onConfirm={del}
       />}
       {mode === CREATE &&
         <Form
@@ -60,13 +61,21 @@ const Appointment = props => {
         />
       }
       {mode === DELETING && <Status message="Cancelling your interview" />}
+      {mode === EDIT && <Form
+        onCancel={() => transition(SHOW)}
+        onSave={save}
+        interviewers={interviewers}
+        student={interview.student}
+        interviewer={interview.interviewer.id}
+      />
+      }
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === SAVING && <Status message="Booking your interview..." />}
+      {mode === SAVING && <Status message="Saving..." />}
       {mode === SHOW &&
         <Show
           student={interview.student}
           interviewer={interview.interviewer}
-          // onEdit={onEdit}
+          onEdit={() => transition(EDIT)}
           onDelete={() => transition(CONFIRM)}
         />
       }

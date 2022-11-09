@@ -17,6 +17,8 @@ const Appointment = props => {
   const DELETING = "DELETING";
   const EDIT = "EDIT";
   const EMPTY = "EMPTY";
+  const ERROR_DELETE = "ERROR_DELETE";
+  const ERROR_SAVE = "ERROR_SAVE";
   const SAVING = "SAVING";
   const SHOW = "SHOW";
 
@@ -31,18 +33,20 @@ const Appointment = props => {
     transition(SAVING);
 
     bookInterview(id, interview)
-      .then(() => transition(SHOW));
+      .then(() => transition(SHOW))
+      .catch(() => transition(ERROR_SAVE, true));
   };
 
-  const del = (name, interviewer) => {
+  const destroy = (name, interviewer) => {
     const interview = {
       student: name,
       interviewer
     };
-    transition(DELETING);
+    transition(DELETING, true);
 
     cancelInterview(id, interview)
-      .then(() => transition(EMPTY));
+      .then(() => transition(EMPTY))
+      .catch(() => transition(ERROR_DELETE, true));
   };
 
   return (
@@ -50,8 +54,8 @@ const Appointment = props => {
       <Header time={time} />
       {mode === CONFIRM && <Confirm
         message={"Are you sure you would like to cancel your interview?"}
-        onCancel={() => transition(SHOW)}
-        onConfirm={del}
+        onCancel={() => transition((SHOW))}
+        onConfirm={destroy}
       />}
       {mode === CREATE &&
         <Form
@@ -70,6 +74,16 @@ const Appointment = props => {
       />
       }
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+      {mode === ERROR_DELETE && <Error
+        message="There was an error when deleting"
+        onClose={() => back()}
+      />
+      }
+      {mode === ERROR_SAVE && <Error
+        message="There was an error when saving"
+        onClose={() => back()}
+      />
+      }
       {mode === SAVING && <Status message="Saving..." />}
       {mode === SHOW &&
         <Show

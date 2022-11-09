@@ -12,7 +12,8 @@ const Application = () => {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {}
+    appointments: {},
+    interviewers: {}
   });
 
   useEffect(() => {
@@ -34,19 +35,29 @@ const Application = () => {
   const dailyInterviewers = getInterviewersForDay(state, state.day);
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
+  const bookInterview = (id, interview) => {
+    const appointment = { ...state.appointments[id], interview: { ...interview } };
+    const appointments = { ...state.appointments, [id]: appointment };
+    setState(prev => ({ ...prev, appointments }));
+  };
+
   const appointmentList = dailyAppointments.map(appointment => {
     const interview = getInterview(state, appointment.interview);
 
     return (
       <Appointment
-        key={appointment.id} // 1
-        id={appointment.id} // 1
-        time={appointment.time} //12
-        interview={interview} // null || interview obj: student name, interviewer info(ID, avatar, name)
-        interviewers={dailyInterviewers} // object of available interviewers for day
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+        interviewers={dailyInterviewers}
+        bookInterview={bookInterview}
       />
     );
   });
+
+
+
 
   return (
     <main className="layout">

@@ -4,12 +4,7 @@ import './DayListItem.scss';
 
 
 const DayListItem = (props) => {
-  const {
-    value, // String
-    spots, // Number
-    selected, // Boolean
-    onChange // Function
-  } = props;
+  const { value, spots, selected, onChange } = props;
 
   const dayClass = classNames("day-list__item", {
     "day-list__item--selected": selected,

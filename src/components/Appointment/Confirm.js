@@ -2,13 +2,12 @@ import React from 'react';
 import Button from 'components/Button';
 
 const Confirm = props => {
-
   const {
-    onCancel, // function
-    onConfirm, // function
-    message // string
+    onCancel,
+    onConfirm,
+    message
   } = props;
-  
+
   return (
     <main className="appointment__card appointment__card--confirm">
       <h1 className="text--semi-bold">{message}</h1>
@@ -18,7 +17,6 @@ const Confirm = props => {
       </section>
     </main>
   );
-
 };
 
 export default Confirm;

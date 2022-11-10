@@ -12,6 +12,15 @@ import useVisualMode from 'hooks/useVisualMode';
 import './styles.scss';
 
 const Appointment = props => {
+  const {
+    id,
+    time,
+    interview,
+    interviewers,
+    bookInterview,
+    cancelInterview
+  } = props;
+
   const CONFIRM = "CONFIRM";
   const CREATE = "CREATE";
   const DELETING = "DELETING";
@@ -22,14 +31,18 @@ const Appointment = props => {
   const SAVING = "SAVING";
   const SHOW = "SHOW";
 
-  const { id, time, interview, interviewers, bookInterview, cancelInterview } = props;
-  const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
+  const {
+    mode,
+    transition,
+    back
+  } = useVisualMode(interview ? SHOW : EMPTY);
 
   const save = (name, interviewer) => {
     const interview = {
       student: name,
       interviewer
     };
+
     transition(SAVING);
 
     bookInterview(id, interview)
@@ -42,6 +55,7 @@ const Appointment = props => {
       student: name,
       interviewer
     };
+
     transition(DELETING, true);
 
     cancelInterview(id, interview)
@@ -52,11 +66,13 @@ const Appointment = props => {
   return (
     <article className="appointment">
       <Header time={time} />
-      {mode === CONFIRM && <Confirm
-        message={"Are you sure you would like to cancel your interview?"}
-        onCancel={() => transition((SHOW))}
-        onConfirm={destroy}
-      />}
+      {mode === CONFIRM &&
+        <Confirm
+          message={"Are you sure you would like to cancel your interview?"}
+          onCancel={() => transition((SHOW))}
+          onConfirm={destroy}
+        />
+      }
       {mode === CREATE &&
         <Form
           onCancel={() => back()}
@@ -65,24 +81,27 @@ const Appointment = props => {
         />
       }
       {mode === DELETING && <Status message="Cancelling your interview" />}
-      {mode === EDIT && <Form
-        onCancel={() => transition(SHOW)}
-        onSave={save}
-        interviewers={interviewers}
-        student={interview.student}
-        interviewer={interview.interviewer.id}
-      />
+      {mode === EDIT &&
+        <Form
+          onCancel={() => transition(SHOW)}
+          onSave={save}
+          interviewers={interviewers}
+          student={interview.student}
+          interviewer={interview.interviewer.id}
+        />
       }
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === ERROR_DELETE && <Error
-        message="There was an error when deleting"
-        onClose={() => back()}
-      />
+      {mode === ERROR_DELETE &&
+        <Error
+          message="There was an error when deleting"
+          onClose={() => back()}
+        />
       }
-      {mode === ERROR_SAVE && <Error
-        message="There was an error when saving"
-        onClose={() => back()}
-      />
+      {mode === ERROR_SAVE &&
+        <Error
+          message="There was an error when saving"
+          onClose={() => back()}
+        />
       }
       {mode === SAVING && <Status message="Saving..." />}
       {mode === SHOW &&

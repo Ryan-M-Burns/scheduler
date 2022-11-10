@@ -1,12 +1,11 @@
 import React from 'react';
 
 const Show = props => {
-  console.log("Show", props);
   const {
-    student, // string
-    interviewer, // number
-    onEdit, // function
-    onDelete // function
+    student,
+    interviewer,
+    onEdit,
+    onDelete
   } = props;
 
   return (
@@ -42,7 +41,6 @@ const Show = props => {
       </section>
     </main>
   );
-
 };
 
 export default Show;

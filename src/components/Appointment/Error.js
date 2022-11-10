@@ -1,11 +1,7 @@
 import React from 'react';
 
 const Error = props => {
-
-  const {
-    message, // string
-    onClose //function
-  } = props;
+  const { message, onClose } = props;
 
   return (
     <main className="appointment__card appointment__card--error">

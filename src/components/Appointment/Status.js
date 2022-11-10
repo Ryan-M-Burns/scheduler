@@ -1,10 +1,7 @@
 import React from 'react';
 
 const Status = props => {
-
-  const {
-    message // string
-  } = props;
+  const { message } = props;
 
   return (
     <main className="appointment__card appointment__card--status">

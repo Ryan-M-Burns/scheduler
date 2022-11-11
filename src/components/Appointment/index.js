@@ -38,21 +38,17 @@ const Appointment = props => {
   } = useVisualMode(interview ? SHOW : EMPTY);
 
   const save = (name, interviewer) => {
+    const interview = {
+      student: name,
+      interviewer
+    };
 
-    if (name && interviewer) {
-      const interview = {
-        student: name,
-        interviewer
-      };
-
-      transition(SAVING);
-    }
+    transition(SAVING);
 
     bookInterview(id, interview)
       .then(() => transition(SHOW))
       .catch(() => transition(ERROR_SAVE, true));
   };
-
 
   const destroy = (name, interviewer) => {
     const interview = {

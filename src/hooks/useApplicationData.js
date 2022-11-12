@@ -61,7 +61,7 @@ const useApplicationData = () => {
       [id]: appointment
     };
     const days = updateSpots(appointments);
-    console.log({id});
+
     return axios.delete(`/api/appointments/${id}`, { interview })
       .then(() => setState(prev => ({ ...prev, days, appointments })));
   };

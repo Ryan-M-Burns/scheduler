@@ -78,5 +78,15 @@ export default {
         data: fixtures.interviewers
       });
     }
+  }),
+
+  put: jest.fn(url => {
+    const id = 1;
+    if (url === `/api/appointments/${id}`) {
+      return Promise.resolve({
+        status: 200,
+        statusText: "No Content"
+      });
+    }
   })
 };

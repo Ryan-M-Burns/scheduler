@@ -4,11 +4,10 @@ import InterviewerListItem from './InterviewerListItem';
 import "./InterviewerList.scss";
 
 const InterviewerList = props => {
-
   const {
-    interviewers, // array
-    onChange, // function
-    value, // number
+    interviewers,
+    onChange,
+    value,
   } = props;
 
   const interviewerList = interviewers.map(interviewer => {
@@ -18,7 +17,7 @@ const InterviewerList = props => {
         name={interviewer.name}
         avatar={interviewer.avatar}
         selected={interviewer.id === value}
-        onChange={event => onChange(interviewer.id)}
+        onChange={() => onChange(interviewer.id)}
       />
     );
   });

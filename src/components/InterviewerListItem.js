@@ -4,15 +4,17 @@ import classNames from 'classnames';
 import "./InterviewerListItem.scss";
 
 const InterviewerListItem = props => {
-
   const {
-    name, // string
-    avatar, // url
-    selected, // boolean
-    onChange // function
+    name,
+    avatar,
+    selected,
+    onChange
   } = props;
 
-  const InterviewerItemClass = classNames("interviewers__item", { "interviewers__item--selected": selected });
+  const InterviewerItemClass = classNames(
+    "interviewers__item",
+    { "interviewers__item--selected": selected }
+  );
 
   return (
     <li className={InterviewerItemClass} onClick={onChange}>
@@ -24,7 +26,6 @@ const InterviewerListItem = props => {
       {selected && name}
     </li>
   );
-
 };
 
 export default InterviewerListItem;

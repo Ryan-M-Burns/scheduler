@@ -18,7 +18,6 @@ const Application = () => {
   } = useApplicationData();
 
   const dailyInterviewers = getInterviewersForDay(state, state.day);
-
   const dailyAppointments = getAppointmentsForDay(state, state.day).map(
     appointment => {
       return (

@@ -16,11 +16,11 @@ const useVisualMode = initial => {
     if (history.length === 1) {
       return setMode(initial);
     }
-    const historyCopy = [...prev];
-    
+
+    const historyCopy = [...history];
     historyCopy.pop();
     setHistory(() => (historyCopy));
-    setMode(() => history[history.length - 1]);
+    setMode(() => history[history.length - 2]);
   };
 
   return { mode, transition, back };

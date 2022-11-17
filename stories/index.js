@@ -168,6 +168,7 @@ storiesOf("Appointment", module)
       onEdit={action("onEdit")}
       onDelete={action("onDelete")}
       student="Lidia Miller-Jones"
+      interviewer={interviewers[1]}
     />
   ))
   .add("Confirm", () => (

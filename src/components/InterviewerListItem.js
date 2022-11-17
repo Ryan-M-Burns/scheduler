@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import "./InterviewerListItem.scss";
 
+// generate a single interviewer
 const InterviewerListItem = props => {
   const {
     name,

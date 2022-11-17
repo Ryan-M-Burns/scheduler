@@ -1,6 +1,7 @@
 import React from 'react';
 import DayListItem from './DayListItem';
 
+//generate day pieces for sidebar
 const DayList = props => {
   const { days, value, onChange } = props;
 

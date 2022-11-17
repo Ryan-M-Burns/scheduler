@@ -37,6 +37,7 @@ const Appointment = props => {
     back
   } = useVisualMode(interview ? SHOW : EMPTY);
 
+  // change state to show saved interview
   const save = (name, interviewer) => {
     const interview = {
       student: name,
@@ -50,6 +51,7 @@ const Appointment = props => {
       .catch(() => transition(ERROR_SAVE, true));
   };
 
+  // delete booked appointment
   const destroy = (name, interviewer) => {
     const interview = {
       student: name,

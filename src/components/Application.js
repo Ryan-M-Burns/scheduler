@@ -3,10 +3,13 @@ import React from "react";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
 import useApplicationData from "hooks/useApplicationData";
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
+import { 
+  getAppointmentsForDay, 
+  getInterview, 
+  getInterviewersForDay 
+} from "helpers/selectors";
 
 import "components/Application.scss";
-
 
 const Application = () => {
 

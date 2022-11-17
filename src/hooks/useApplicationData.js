@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+// manage state for application data
 const useApplicationData = () => {
+
   const [state, setState] = useState({
     day: "Monday",
     days: [],
     appointments: {},
     interviewers: {}
   });
-
+  // call data from scheduler-api database
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -24,9 +25,12 @@ const useApplicationData = () => {
       });
   }, []);
 
+  
   const setDay = day => setState(prev => ({ ...prev, day }));
 
+  // Updates the spots remaining counter
   const updateSpots = (appointments) => {
+    
     const currentDay = state.days.find(day => day.name === state.day);
     const nullAppointments = currentDay.appointments.filter(id => appointments[id].interview === null);
     const spots = nullAppointments.length;
@@ -36,20 +40,24 @@ const useApplicationData = () => {
     return newDays;
   };
 
+
   const bookInterview = (id, interview) => {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
     };
+
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
+
     const days = updateSpots(appointments);
 
     return axios.put(`/api/appointments/${id}`, { interview })
       .then(() => setState(prev => ({ ...prev, days, appointments })));
   };
+
 
   const cancelInterview = (id, interview) => {
     const appointment = {
@@ -65,7 +73,7 @@ const useApplicationData = () => {
     return axios.delete(`/api/appointments/${id}`, { interview })
       .then(() => setState(prev => ({ ...prev, days, appointments })));
   };
-
+  // return current state, and functions for managing state
   return { state, setDay, bookInterview, cancelInterview };
 };
 

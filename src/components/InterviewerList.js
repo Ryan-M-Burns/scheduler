@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import InterviewerListItem from './InterviewerListItem';
 import "./InterviewerList.scss";
 
+// generate interviewers for day
 const InterviewerList = props => {
   const {
     interviewers,

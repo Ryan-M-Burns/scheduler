@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import './DayListItem.scss';
 
-
+// generate day tab
 const DayListItem = props => {
   const { value, spots, selected, onChange } = props;
 
@@ -11,6 +11,7 @@ const DayListItem = props => {
     "day-list__item--full": spots === 0
   });
 
+  // adjust available spots for day
   const formatSpots = () => {
     if (spots === 1) {
       return "1 spot remaining";

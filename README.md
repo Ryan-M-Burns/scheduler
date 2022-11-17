@@ -13,6 +13,7 @@ Introduction to React. A SPA interview scheduler with multiple testing environem
 1. Install dependencies with `npm install`.
 2. Clone scheduler-api outside of your scheduler app folder
 3. Follow README for scheduler-api to set up database
+  - https://github.com/Ryan-M-Burns/scheduler-api
 4. `npm start` from within scheduler-api folder to start up database 
 5. `npm start` from within scheduler folder to start up scheduler app
 
@@ -26,3 +27,26 @@ npm test
 ```sh
 npm run storybook
 ```
+
+Dependencies
+- testing-library/react-hooks
+- axios
+- classnames
+- normalize.css
+- react
+- react-dom
+- react-scripts
+
+Dev Dependencies
+- babel/core
+- storybook
+  - addon-actions
+  - addon-backgrounds
+  - addon-links
+  - addons
+  - react
+- testing-library/jest-dom
+- testing-library/react
+- prop-types
+- react-test-renderer
+- sass
